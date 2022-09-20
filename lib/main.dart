@@ -21,13 +21,17 @@ class Quizzler extends StatelessWidget {
 }
 
 class QuizPage extends StatefulWidget {
-  const QuizPage({super.key});
-
   @override
   State<QuizPage> createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Icon> scoreKeeper = [
+    Icon(
+      Icons.check,
+      color: Colors.green,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,7 +67,14 @@ class _QuizPageState extends State<QuizPage> {
                     fontSize: 20,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    scoreKeeper.add(Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ));
+                  });
+                },
               ),
             ),
           ),
@@ -91,18 +102,7 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         Row(
-          children: [
-            SizedBox(
-              height: 25,
-              child: Text(
-                "Here will be the score.",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-            )
-          ],
+          children: scoreKeeper,
         )
       ],
     );
